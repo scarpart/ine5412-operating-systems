@@ -1,2 +1,2 @@
-# ine5412-operating-systems
-Repo for our operating systems class, in which we create a thraed-management library and a game that runs on it. 
+# user-level-os
+A library for managing threads at the user level, and a practical application of it in the form of a game.
