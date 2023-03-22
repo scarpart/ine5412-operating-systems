@@ -9,8 +9,7 @@ OBJ=$(C_SOURCE:.cc=.o)
 CC=g++
  
 CC_FLAGS= -g -c -Wall
- 
-#Compilation
+
 all: $(PROJ_NAME)
  
 $(PROJ_NAME): $(OBJ)
