@@ -1,4 +1,4 @@
-PROJ_NAME=program
+PROJ_NAME=main
  
 C_SOURCE=$(wildcard *.cc)
  
@@ -15,12 +15,6 @@ all: $(PROJ_NAME)
  
 $(PROJ_NAME): $(OBJ)
 	$(CC) -o $@ $^
- 
-%.o: %.cc %.h
-	$(CC) -o $@ $< $(CC_FLAGS)
- 
-main.o: main.cc $(H_SOURCE)
-	$(CC) -o $@ $< $(CC_FLAGS)
  
 clean:
 	rm -rf *.o $(PROJ_NAME) *~
