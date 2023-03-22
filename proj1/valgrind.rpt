@@ -1,0 +1,684 @@
+==515755== Memcheck, a memory error detector
+==515755== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==515755== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==515755== Command: ./program
+==515755== Parent PID: 496281
+==515755== 
+==515755== Warning: client switching stacks?  SP change: 0x1ffefff8b8 --> 0x4dbb748
+==515755==          to suppress, use: --max-stackframe=137340666224 or greater
+==515755== Invalid read of size 8
+==515755==    at 0x4AB4417: swapcontext (swapcontext.S:97)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb828 is 136 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB441E: swapcontext (swapcontext.S:98)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb820 is 128 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB4422: swapcontext (swapcontext.S:99)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb7f0 is 80 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB4426: swapcontext (swapcontext.S:100)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb7f8 is 88 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB442A: swapcontext (swapcontext.S:101)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb800 is 96 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB442E: swapcontext (swapcontext.S:102)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb808 is 104 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB454F: swapcontext (swapcontext.S:233)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb850 is 176 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB4557: swapcontext (swapcontext.S:237)
+==515755==    by 0x109773: SOLUTION::Main::func_ping(char*) (main_class.h:53)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb810 is 112 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB455B: swapcontext (swapcontext.S:238)
+==515755==    by 0x109773: SOLUTION::Main::func_ping(char*) (main_class.h:53)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb818 is 120 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB455F: swapcontext (swapcontext.S:239)
+==515755==    by 0x109773: SOLUTION::Main::func_ping(char*) (main_class.h:53)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb840 is 160 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB4566: swapcontext (swapcontext.S:240)
+==515755==    by 0x109773: SOLUTION::Main::func_ping(char*) (main_class.h:53)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb7d0 is 48 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB456A: swapcontext (swapcontext.S:241)
+==515755==    by 0x109773: SOLUTION::Main::func_ping(char*) (main_class.h:53)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb7d8 is 56 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB456E: swapcontext (swapcontext.S:244)
+==515755==    by 0x109773: SOLUTION::Main::func_ping(char*) (main_class.h:53)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb830 is 144 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB4364: swapcontext (swapcontext.S:40)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb828 is 136 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB436B: swapcontext (swapcontext.S:41)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb820 is 128 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB436F: swapcontext (swapcontext.S:42)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb7f0 is 80 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB4373: swapcontext (swapcontext.S:43)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb7f8 is 88 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB4377: swapcontext (swapcontext.S:44)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb800 is 96 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB437B: swapcontext (swapcontext.S:45)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb808 is 104 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB437F: swapcontext (swapcontext.S:47)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb810 is 112 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB4383: swapcontext (swapcontext.S:48)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb818 is 120 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB4387: swapcontext (swapcontext.S:49)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb830 is 144 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB438E: swapcontext (swapcontext.S:50)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb840 is 160 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB4395: swapcontext (swapcontext.S:51)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb7d0 is 48 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB4399: swapcontext (swapcontext.S:52)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb7d8 is 56 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB43A1: swapcontext (swapcontext.S:55)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb850 is 176 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB43AD: swapcontext (swapcontext.S:57)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb848 is 168 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 8
+==515755==    at 0x4AB43BB: swapcontext (swapcontext.S:63)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb888 is 232 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 4
+==515755==    at 0x4AB43C2: swapcontext (swapcontext.S:65)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb950 is 432 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid write of size 4
+==515755==    at 0x4AB43C4: swapcontext (swapcontext.S:66)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb968 is 456 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Syscall param rt_sigprocmask(oldset) points to unaddressable byte(s)
+==515755==    at 0x4AB43F1: swapcontext (swapcontext.S:81)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb8d0 is 304 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x1093F3: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:31)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x109730: SOLUTION::Main::func_ping(char*) (main_class.h:45)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x1096E3: SOLUTION::Main::func_ping(char*) (main_class.h:45)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x1096E5: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x4995BC1: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x1096F7: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x483EF46: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x4995BCD: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x1096F7: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x483EF54: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x4995BCD: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x1096F7: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x4AEE718: _IO_new_file_xsputn (fileops.c:1217)
+==515755==    by 0x4AEE718: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==515755==    by 0x4AE23C0: fwrite (iofwrite.c:39)
+==515755==    by 0x4995823: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x4995BDB: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x1096F7: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x4AEE70C: _IO_new_file_xsputn (fileops.c:1219)
+==515755==    by 0x4AEE70C: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==515755==    by 0x4AE23C0: fwrite (iofwrite.c:39)
+==515755==    by 0x4995823: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x4995BDB: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x1096F7: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x4843673: mempcpy (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x4AEE631: _IO_new_file_xsputn (fileops.c:1236)
+==515755==    by 0x4AEE631: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==515755==    by 0x4AE23C0: fwrite (iofwrite.c:39)
+==515755==    by 0x4995823: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x4995BDB: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x1096F7: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x4843688: mempcpy (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x4AEE631: _IO_new_file_xsputn (fileops.c:1236)
+==515755==    by 0x4AEE631: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==515755==    by 0x4AE23C0: fwrite (iofwrite.c:39)
+==515755==    by 0x4995823: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x4995BDB: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x1096F7: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x484368D: mempcpy (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x4AEE631: _IO_new_file_xsputn (fileops.c:1236)
+==515755==    by 0x4AEE631: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==515755==    by 0x4AE23C0: fwrite (iofwrite.c:39)
+==515755==    by 0x4995823: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x4995BDB: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x1096F7: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x48436A0: mempcpy (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x4AEE631: _IO_new_file_xsputn (fileops.c:1236)
+==515755==    by 0x4AEE631: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==515755==    by 0x4AE23C0: fwrite (iofwrite.c:39)
+==515755==    by 0x4995823: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x4995BDB: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x1096F7: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x48436B2: mempcpy (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x4AEE631: _IO_new_file_xsputn (fileops.c:1236)
+==515755==    by 0x4AEE631: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+==515755==    by 0x4AE23C0: fwrite (iofwrite.c:39)
+==515755==    by 0x4995823: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x4995BDB: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x1096F7: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x1096FB: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x4987402: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x4995D5E: std::ostream& std::ostream::_M_insert<long>(long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x109707: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x498710B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x498742C: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x4995D5E: std::ostream& std::ostream::_M_insert<long>(long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x109707: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x498711D: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x498742C: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x4995D5E: std::ostream& std::ostream::_M_insert<long>(long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x109707: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x4987462: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x4995D5E: std::ostream& std::ostream::_M_insert<long>(long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x109707: SOLUTION::Main::func_ping(char*) (main_class.h:47)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Syscall param rt_sigprocmask(set) points to uninitialised byte(s)
+==515755==    at 0x4AB43F1: swapcontext (swapcontext.S:81)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x10972F: SOLUTION::Main::func_ping(char*) (main_class.h:48)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb8d0 is 304 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x4AB4407: swapcontext (swapcontext.S:92)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x10972F: SOLUTION::Main::func_ping(char*) (main_class.h:48)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x4AB4407: swapcontext (swapcontext.S:92)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x10972F: SOLUTION::Main::func_ping(char*) (main_class.h:48)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x4AB4409: swapcontext (swapcontext.S:93)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x10972F: SOLUTION::Main::func_ping(char*) (main_class.h:48)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB4417: swapcontext (swapcontext.S:97)
+==515755==    by 0x4DB74CF: ???
+==515755==    by 0x4DBB79F: ???
+==515755==    by 0x1FFEFFF9FF: ???
+==515755==    by 0x4DBFA0F: ???
+==515755==    by 0x4DBFA0F: ???
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==  Address 0x4dbb828 is 136 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB441E: swapcontext (swapcontext.S:98)
+==515755==    by 0x4DB74CF: ???
+==515755==    by 0x4DBB79F: ???
+==515755==    by 0x1FFEFFF9FF: ???
+==515755==    by 0x4DBFA0F: ???
+==515755==    by 0x4DBFA0F: ???
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==  Address 0x4dbb820 is 128 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB4422: swapcontext (swapcontext.S:99)
+==515755==    by 0x4DB74CF: ???
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb7f0 is 80 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB4426: swapcontext (swapcontext.S:100)
+==515755==    by 0x4DB74CF: ???
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb7f8 is 88 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB442A: swapcontext (swapcontext.S:101)
+==515755==    by 0x4DB74CF: ???
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb800 is 96 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB442E: swapcontext (swapcontext.S:102)
+==515755==    by 0x4DB74CF: ???
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb808 is 104 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB454F: swapcontext (swapcontext.S:233)
+==515755==    by 0x4DB74CF: ???
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb850 is 176 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x4AB4556: swapcontext (swapcontext.S:234)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB4557: swapcontext (swapcontext.S:237)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb810 is 112 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB455B: swapcontext (swapcontext.S:238)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb818 is 120 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB455F: swapcontext (swapcontext.S:239)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb840 is 160 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB4566: swapcontext (swapcontext.S:240)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb7d0 is 48 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB456A: swapcontext (swapcontext.S:241)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb7d8 is 56 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Invalid read of size 8
+==515755==    at 0x4AB456E: swapcontext (swapcontext.S:244)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755==  Address 0x4dbb830 is 144 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x109736: SOLUTION::Main::func_ping(char*) (main_class.h:50)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x4995BC1: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x109748: SOLUTION::Main::func_ping(char*) (main_class.h:50)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x483EF46: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x4995BCD: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x109748: SOLUTION::Main::func_ping(char*) (main_class.h:50)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x483EF54: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x4995BCD: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28)
+==515755==    by 0x109748: SOLUTION::Main::func_ping(char*) (main_class.h:50)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Warning: client switching stacks?  SP change: 0x4dbb6e8 --> 0x1ffefff8c0
+==515755==          to suppress, use: --max-stackframe=137340666328 or greater
+==515755== Syscall param rt_sigprocmask(set) points to uninitialised byte(s)
+==515755==    at 0x4AB43F1: swapcontext (swapcontext.S:81)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1095E9: SOLUTION::Main::run() (main_class.h:26)
+==515755==    by 0x109466: main (main.cc:11)
+==515755==  Address 0x4dbb8d0 is 304 bytes inside a block of size 976 alloc'd
+==515755==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x10959B: SOLUTION::Main::run() (main_class.h:23)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x4AB4407: swapcontext (swapcontext.S:92)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1095E9: SOLUTION::Main::run() (main_class.h:26)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x4AB4407: swapcontext (swapcontext.S:92)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1095E9: SOLUTION::Main::run() (main_class.h:26)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x4AB4409: swapcontext (swapcontext.S:93)
+==515755==    by 0x1093E7: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1095E9: SOLUTION::Main::run() (main_class.h:26)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Warning: client switching stacks?  SP change: 0x1ffefff8b8 --> 0x4dbf9c0
+==515755==          to suppress, use: --max-stackframe=137340649208 or greater
+==515755==          further instances of this message will not be shown.
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x4AB4577: swapcontext (swapcontext.S:248)
+==515755==    by 0x4DB74CF: ???
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Use of uninitialised value of size 8
+==515755==    at 0x1093EC: SOLUTION::CPU::switch_context(SOLUTION::CPU::Context*, SOLUTION::CPU::Context*) (cpu.cc:29)
+==515755==    by 0x1097FD: SOLUTION::Main::func_pong(char*) (main_class.h:64)
+==515755==    by 0x4ABA4DF: ??? (__start_context.S:91)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x109390: SOLUTION::CPU::Context::~Context() (cpu.cc:19)
+==515755==    by 0x109652: SOLUTION::Main::run() (main_class.h:32)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== Conditional jump or move depends on uninitialised value(s)
+==515755==    at 0x483D705: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==515755==    by 0x1093A0: SOLUTION::CPU::Context::~Context() (cpu.cc:19)
+==515755==    by 0x109652: SOLUTION::Main::run() (main_class.h:32)
+==515755==    by 0x109466: main (main.cc:11)
+==515755== 
+==515755== 
+==515755== HEAP SUMMARY:
+==515755==     in use at exit: 0 bytes in 0 blocks
+==515755==   total heap usage: 7 allocs, 7 frees, 108,656 bytes allocated
+==515755== 
+==515755== All heap blocks were freed -- no leaks are possible
+==515755== 
+==515755== Use --track-origins=yes to see where uninitialised values come from
+==515755== For lists of detected and suppressed errors, rerun with: -s
+==515755== ERROR SUMMARY: 729 errors from 80 contexts (suppressed: 0 from 0)
