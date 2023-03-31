@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "traits.h"
+#include "debug.h"
 
 __BEGIN_API
 

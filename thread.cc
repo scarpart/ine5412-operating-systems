@@ -14,9 +14,11 @@ int Thread::switch_context(Thread * prev, Thread * next) {
     // checking if the result is equal to 0, so we can change the running thread
     if (result == 0) {
         _running = next;
+        db<Thread>(TRC) << "Thread::switch_context method was successfull\n";
         return 0;
     }
 
+    db<Thread>(TRC) << "Thread::switch_context method went wrong\n";
     // otherwise, -1 is returned to announce some error occurred
     return -1;
 }
@@ -24,12 +26,14 @@ int Thread::switch_context(Thread * prev, Thread * next) {
 // id implementation
 int Thread::id() {
     // return the thread's id
+    db<Thread>(TRC) << "Thread's id returned\n";
     return _id;
 };
 
 // context() implementation
 Thread::Context* Thread::context() {
     // return the thread's context
+    db<Thread>(TRC) << "Thread's context returned\n";
     return _context;
 };
 
