@@ -61,11 +61,14 @@ private:
     /*
      * Qualquer outro atributo que você achar necessário para a solução.
      */ 
+
+    static int _counter;
 };
 
 template <typename ...Tn>
 Thread::Thread(void (*entry)(Tn...), Tn... an) {
-    CPU::Context(entry, an...);
+    _context = new Context(entry, an...);
+    _id = _counter++;
 }
 
 __END_API

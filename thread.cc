@@ -4,16 +4,21 @@
 __BEGIN_API
 
 Thread* Thread::_running = nullptr;
+int Thread::_counter = 0;
 
 // thread_exit implementation
-void Thread::thread_exit (int exit_code) {}
+void Thread::thread_exit (int exit_code) {
+    // this method is used to deallocate thread's context
+    if (_context) {
+        db<Thread>(TRC) << "Thread::thread_exit method was called";
+        delete _context;
+    }
+}
 
 // switch_context implementation
 int Thread::switch_context(Thread * prev, Thread * next) {
     // this function will return 0 if successfull, or -1 if failed
     int result = CPU::switch_context(prev->_context, next->_context);
-	std::cout << "Switcheed context from " << prev->id() << " to " 
-		<< next->id() << "\n";
 
     // checking if the result is equal to 0, so we can change the running thread
     if (result == 0) {

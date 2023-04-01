@@ -21,9 +21,6 @@ public:
         
         mainContext = new CPU::Context();
 
-		std::cout << "Here before switchcontext\n";
-		std::cout << mainContext << std::endl;
-		std::cout << ThreadMain->context() << std::endl;
 		CPU::switch_context(mainContext, ThreadMain->context());
 
         delete mainContext;
