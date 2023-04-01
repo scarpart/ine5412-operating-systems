@@ -24,8 +24,10 @@ CPU::Context::~Context()
 
 int CPU::switch_context(Context *from, Context *to)
 {
+	std::cout << from << std::endl;
+	std::cout << to << std::endl;
     if (!from || !to) {
-        db<CPU>(TRC) << "CPU::Context::switch_context returned -1\n";
+        db<CPU>(TRC) << "CPU::Context::switch_context returned -1 (`!from || !to` returned `true`)\n";
         return -1;
     }
 

@@ -21,7 +21,10 @@ public:
         
         mainContext = new CPU::Context();
 
-        CPU::switch_context(mainContext, ThreadMain->context());
+		std::cout << "Here before switchcontext\n";
+		std::cout << mainContext << std::endl;
+		std::cout << ThreadMain->context() << std::endl;
+		CPU::switch_context(mainContext, ThreadMain->context());
 
         delete mainContext;
     }
@@ -59,7 +62,7 @@ private:
         for (i = 0; i < ITERATIONS; i++)
         {
             std::cout << arg << i << "\n" ;
-            Thread::switch_context(ping, pong);
+			Thread::switch_context(ping, pong);
         }
         std::cout << arg << ": fim\n";
 

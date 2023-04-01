@@ -51,7 +51,7 @@ public:
     /*
      * Retorna o contexto da thread
      */
-    Context* context();
+    Context* context() volatile;
 
 private:
     int _id;
