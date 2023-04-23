@@ -469,7 +469,7 @@ public:
     }
 
     Element * remove(const Object_Type * obj) {
-        db<Lists>(TRC) << "Ordered_List::remove(o=" << obj << ")\n";
+        //db<Lists>(TRC) << "Ordered_List::remove(o=" << obj << ")\n";
 
         Element * e = search(obj);
         if(e)
