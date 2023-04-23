@@ -44,10 +44,16 @@ Thread::Context* Thread::context() volatile {
 
 // init implementation
 void Thread::init(void (*main)(void *)) {
-    std::string string = "inicio"; 
-    Thread* main = new Thread(main, (char *) string.data());
+    std::string name = "inicio";
 
-    Thread* thread_dispatcher = new Thread();
+    Thread* thread_main = new Thread(main, ((void *)name.c_str()));
+    _main = thread_main;
+    _main_context = thread_main->context();
+
+    Thread* thread_dispatcher = new Thread(dispatcher);
+    _dispatcher = thread_dispatcher;
+
+    switch_context(thread_dispatcher, thread_main);
 }
 
 // dispatcher implementation

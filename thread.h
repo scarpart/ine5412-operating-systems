@@ -103,7 +103,7 @@ private:
     static Thread* _running;
     
     static Thread* _main; 
-    static CPU::Context _main_context;
+    static CPU::Context* _main_context;
     static Thread* _dispatcher;
     static Ready_Queue _ready;
     Ready_Queue::Element _link;
