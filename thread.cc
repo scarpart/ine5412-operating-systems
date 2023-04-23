@@ -8,12 +8,10 @@ int Thread::_counter = 0;
 
 // thread_exit implementation
 void Thread::thread_exit (int exit_code) {
-    // this method is used to deallocate thread's context
-    if (_context) {
-        db<Thread>(TRC) << "Thread::thread_exit method was called";
-        delete _context;
-    }
+    db<Thread>(TRC) << "Thread::thread_exit method was called";
+    this->_state = State::FINISHING;
 }
+
 
 // switch_context implementation
 int Thread::switch_context(Thread * prev, Thread * next) {
@@ -85,6 +83,7 @@ void Thread::dispatcher() {
 
         // If not, i'll be inserted again at the same position
         if (next_thread->object()->_state != State::FINISHING) {
+            // ??? Is this thread the dispatcher one ???
             _ready.insert(next_thread);
 
             delete next_thread;
@@ -116,10 +115,30 @@ void Thread::dispatcher() {
 void Thread::yield() {
     db<Thread>(TRC) << "Thread::yield called\n";
 
-    /*
-    imprima informação usando o debug em nível TRC
+    // removing the first thread in the ready queue
+    Ready_Queue::Element* thread_next = _ready.remove();
 
-    escolha uma próxima thread a ser executada
+    // updating the running thread state and priority
+    _running->_state = State::READY;
+    int now = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+    _running->_link.rank(now);
+
+    // creating a pointer to the thread that called yield()
+    Thread* thread_prev = _running;
+
+    // inserting the thread_prev
+    _ready.insert(&thread_prev->_link);
+
+    // updating the new running thread
+    _running = thread_next->object();
+    _running->_state = State::RUNNING;
+
+    // switching contexts between the previous running thread and the new one 
+    switch_context(thread_prev, _running); 
+    /*
+    +imprima informação usando o debug em nível TRC
+
+    +escolha uma próxima thread a ser executada
 
     atualiza a prioridade da tarefa que estava sendo executada (aquela que chamou yield) com o
     timestamp atual, a fim de reinserí-la na fila de prontos atualizada (cuide de casos especiais, como
