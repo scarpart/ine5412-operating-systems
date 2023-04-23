@@ -3,6 +3,11 @@
 
 __BEGIN_API
 
+Thread* Thread::_main = nullptr; 
+CPU::Context* Thread::_main_context = nullptr;
+Thread* Thread::_dispatcher = nullptr;
+Thread::Ready_Queue Thread::_ready;
+
 Thread* Thread::_running = nullptr;
 int Thread::_counter = 0;
 

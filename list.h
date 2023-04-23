@@ -147,11 +147,13 @@ public:
     void insert(Element * e) { insert_tail(e); }
 
     void insert_head(Element * e) {
+        /*
         db<Lists>(TRC) << "List::insert_head(e=" << e
                        << ") => {p=" << (e ? e->prev() : (void *) -1)
                        << ",o=" << (e ? e->object() : (void *) -1)
                        << ",n=" << (e ? e->next() : (void *) -1)
                        << "}\n";
+        */
 
         print_head();
         print_tail();
@@ -171,11 +173,13 @@ public:
     }
 
     void insert_tail(Element * e) {
+        /*
         db<Lists>(TRC) << "List::insert_tail(e=" << e
                        << ") => {p=" << (e ? e->prev() : (void *) -1)
                        << ",o=" << (e ? e->object() : (void *) -1)
                        << ",n=" << (e ? e->next() : (void *) -1)
                        << "}\n";
+        */
 
         print_head();
         print_tail();
@@ -197,11 +201,13 @@ public:
     Element * remove() { return remove_head(); }
 
     Element * remove(Element * e) {
+        /*
         db<Lists>(TRC) << "List::remove(e=" << e
                        << ") => {p=" << (e ? e->prev() : (void *) -1)
                        << ",o=" << (e ? e->object() : (void *) -1)
                        << ",n=" << (e ? e->next() : (void *) -1)
                        << "}\n";
+        */
 
         print_head();
         print_tail();
@@ -225,7 +231,7 @@ public:
     }
 
     Element * remove_head() {
-        db<Lists>(TRC) << "List::remove_head()\n";
+        //db<Lists>(TRC) << "List::remove_head()\n";
 
         print_head();
         print_tail();
@@ -246,7 +252,7 @@ public:
     }
 
     Element * remove_tail() {
-        db<Lists>(TRC) << "List::remove_tail()\n";
+        //db<Lists>(TRC) << "List::remove_tail()\n";
 
         print_head();
         print_tail();
@@ -283,6 +289,7 @@ protected:
     bool last() const { return (_size == 1); }
 
     void insert(Element * e, Element * p,  Element * n) {
+        /*
         db<Lists>(TRC) << "List::insert(e=" << e << ",p=" << p << ",n=" << n
                        << ") => {p=" << (e ? e->prev() : (void *) -1)
                        << ",o=" << (e ? e->object() : (void *) -1)
@@ -294,6 +301,7 @@ protected:
                        << ",o=" << (n ? n->object() : (void *) -1)
                        << ",n=" << (n ? n->next() : (void *) -1)
                        << "}\n";
+        */
 
         print_head();
         print_tail();
@@ -309,11 +317,13 @@ protected:
     }
 
     void insert_first(Element * e) {
+        /*
         db<Lists>(TRC) << "List::insert_first(e=" << e
                        << ") => {p=" << (e ? e->prev() : (void *) -1)
                        << ",o=" << (e ? e->object() : (void *) -1)
                        << ",n=" << (e ? e->next() : (void *) -1)
                        << "}\n";
+        */
 
         print_head();
         print_tail();
@@ -329,7 +339,7 @@ protected:
     }
 
     Element * remove_last() {
-        db<Lists>(TRC) << "List::remove_last()\n";
+        //db<Lists>(TRC) << "List::remove_last()\n";
 
         print_head();
         print_tail();
@@ -346,19 +356,23 @@ protected:
     }
 
     void print_head() {
+        /*
         db<Lists>(INF) << "List[" << this << "]::head=" << head()
                        << " => {p=" << (head() ? head()->prev() : (void *) -1)
                        << ",o=" << (head() ? head()->object() : (void *) -1)
                        << ",n=" << (head() ? head()->next() : (void *) -1)
                        << "}\n";
+        */
     }
 
     void print_tail() {
+        /*
         db<Lists>(INF) << "List[" << this << "]::tail=" << tail()
                        << " => {p=" << (tail() ? tail()->prev() : (void *) -1)
                        << ",o=" << (tail() ? tail()->object() : (void *) -1)
                        << ",n=" << (tail() ? tail()->next() : (void *) -1)
                        << "}\n";
+        */
     }
 
 private:
@@ -397,11 +411,13 @@ public:
     using Base::search;
 
     void insert(Element * e) {
+        /*
         db<Lists>(TRC) << "Ordered_List::insert(e=" << e
                        << ") => {p=" << (e ? e->prev() : (void *) -1)
                        << ",o=" << (e ? e->object() : (void *) -1)
                        << ",n=" << (e ? e->next() : (void *) -1)
                        << "}\n";
+        */
 
         if(empty())
             insert_first(e);
@@ -429,7 +445,7 @@ public:
     }
 
     Element * remove() {
-        db<Lists>(TRC) << "Ordered_List::remove()\n";
+        //db<Lists>(TRC) << "Ordered_List::remove()\n";
         Element * e = Base::remove_head();
         if(e && relative && e->next())
             e->next()->rank(e->next()->rank() + e->rank());
@@ -437,11 +453,13 @@ public:
     }
 
     Element * remove(Element * e) {
+        /*
         db<Lists>(TRC) << "Ordered_List::remove(e=" << e
                        << ") => {p=" << (e ? e->prev() : (void *) -1)
                        << ",o=" << (e ? e->object() : (void *) -1)
                        << ",n=" << (e ? e->next() : (void *) -1)
                        << "}\n";
+        */
 
         Base::remove(e);
         if(relative && e->next())
