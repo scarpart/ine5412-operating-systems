@@ -125,7 +125,7 @@ inline Thread::Thread(void (* entry)(Tn ...), Tn ... an) : _link(this,
 
     if (_main != nullptr) {
         _state = State::READY;       
-        _ready.insert(_link);
+        _ready.insert(&_link);
     }
 }
 
