@@ -100,11 +100,11 @@ public:
 private:
     int _id;
     Context * volatile _context;
-    static Thread * _running;
+    static Thread* _running;
     
-    static Thread _main; 
+    static Thread* _main; 
     static CPU::Context _main_context;
-    static Thread _dispatcher;
+    static Thread* _dispatcher;
     static Ready_Queue _ready;
     Ready_Queue::Element _link;
     volatile State _state;
@@ -122,8 +122,14 @@ inline Thread::Thread(void (* entry)(Tn ...), Tn ... an) : _link(this,
 {
     _context = new Context(entry, an...);
     _id = _counter++;
-    _state = State::READY;       
-    _ready.insert(* _link);
+
+    if _main == nullptr && _main_context == nullptr {
+        _main = this;
+        _main_context = * _context;
+    } else {
+        _state = State::READY;       
+        _ready.insert(* _link);
+    }
 }
 
 __END_API

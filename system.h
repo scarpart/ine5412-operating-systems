@@ -18,7 +18,6 @@ public:
      * Deve ser chamado no início da função main.
      */ 
     static void init(void (*main)(void *));
-
 };
 
 __END_API

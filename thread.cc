@@ -42,9 +42,25 @@ Thread::Context* Thread::context() volatile {
     return _context;
 };
 
+// init implementation
+void Thread::init(void (*main)(void *)) {
+    std::string string = "inicio"; 
+    Thread* main = new Thread(main, (char *) string.data());
+
+    Thread* thread_dispatcher = new Thread();
+}
+
 // dispatcher implementation
 void Thread::dispatcher() {
     db<Thread>(TRC) << "Thread::dispatcher called\n";
+
+    while (_ready.size() > 1) {
+
+    }
+
+    _dispatcher->_state = State::FINISHING;
+    _ready.remove();
+    switch_context(_dispatcher, _main);
     /*
     +imprima informação usando o debug em nível TRC
     enquanto existir thread do usuário:
@@ -61,14 +77,10 @@ void Thread::dispatcher() {
     */
 }
 
-// init implementation
-void Thread::init(void (*main)(void *)) {
-
-}
-
 // yield implementation
 void Thread::yield() {
     db<Thread>(TRC) << "Thread::yield called\n";
+
     /*
     imprima informação usando o debug em nível TRC
 
