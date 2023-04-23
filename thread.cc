@@ -44,12 +44,17 @@ Thread::Context* Thread::context() volatile {
 
 // init implementation
 void Thread::init(void (*main)(void *)) {
+    db<Thread>(TRC) << "Thread::init called\n";
+
     std::string name = "inicio";
 
+    // creation of thread main
     Thread* thread_main = new Thread(main, ((void *)name.c_str()));
+
     _main = thread_main;
     _main_context = thread_main->context();
 
+    // creation of thread dispatcher
     Thread* thread_dispatcher = new Thread(dispatcher);
     _dispatcher = thread_dispatcher;
 
@@ -61,25 +66,49 @@ void Thread::dispatcher() {
     db<Thread>(TRC) << "Thread::dispatcher called\n";
 
     while (_ready.size() > 1) {
+        // removing the first thread in the ready queue
+        Ready_Queue::Element* thread_link = _ready.remove();
 
+         // updating state and inserting again thread dispatcher in ready queue  
+        _dispatcher->_state = State::READY;
+        _ready.insert(&_dispatcher->_link);
+        
+        // updating _running pointer
+        _running = thread_link->object();
+        thread_link->object()->_state = State::RUNNING;
+
+        // switching contexts between dispatcher and the thread chose
+        switch_context(_dispatcher, _running);
+
+        // removing the next first thread to test if it's on FINISHING state
+        Ready_Queue::Element* next_thread = _ready.remove();
+
+        // If not, i'll be inserted again at the same position
+        if (next_thread->object()->_state != State::FINISHING) {
+            _ready.insert(next_thread);
+
+            delete next_thread;
+        }
     }
 
     _dispatcher->_state = State::FINISHING;
+    // PERGUNTAR PARA O PROFESSOR: COMO FUNCIONA AS THREADS MAIN E DISPATCHER NA LISTA DE READY
     _ready.remove();
+    
     switch_context(_dispatcher, _main);
     /*
     +imprima informação usando o debug em nível TRC
-    enquanto existir thread do usuário:
-        escolha uma próxima thread a ser executada
-        atualiza o status da própria thread dispatacher para READY e reinsire a mesma em _ready
-        atualiza o ponteiro _running para apontar para a próxima thread a ser executada
-        atualiza o estado da próxima thread a ser executada
-        troca o contexto entre as duas threads
-        testa se o estado da próxima thread é FINISHNING e caso afirmativo a remova de _ready
+    +enquanto existir thread do usuário:
+        +escolha uma próxima thread a ser executada
+        +atualiza o status da própria thread dispatacher para READY e reinsire a mesma em _ready
+        +atualiza o ponteiro _running para apontar para a próxima thread a ser executada
+        +atualiza o estado da próxima thread a ser executada
+        +troca o contexto entre as duas threads
+        +testa se o estado da próxima thread é FINISHNING e caso afirmativo a remova de _ready
     
-    muda o estado da thread dispatcher para FINISHING
-    remova a thread dispatcher da fila de prontos
-    troque o contexto da thread dispatcher para main
+    +muda o estado da thread dispatcher para FINISHING
+    +remova a thread dispatcher da fila de prontos
+    +troque o contexto da thread dispatcher para main
     */
 }
 

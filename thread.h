@@ -123,12 +123,9 @@ inline Thread::Thread(void (* entry)(Tn ...), Tn ... an) : _link(this,
     _context = new Context(entry, an...);
     _id = _counter++;
 
-    if _main == nullptr && _main_context == nullptr {
-        _main = this;
-        _main_context = * _context;
-    } else {
+    if (_main != nullptr) {
         _state = State::READY;       
-        _ready.insert(* _link);
+        _ready.insert(_link);
     }
 }
 
