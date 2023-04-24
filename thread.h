@@ -89,7 +89,7 @@ public:
     /*
      * Destrutor de uma thread. Realiza todo os procedimentos para manter a consistência da classe.
      */ 
-    ~Thread();
+    //~Thread();
 
     /*
      * Qualquer outro método que você achar necessário para a solução.
@@ -123,7 +123,12 @@ inline Thread::Thread(void (* entry)(Tn ...), Tn ... an) : _link(this,
     _context = new Context(entry, an...);
     _id = _counter++;
 
-    if (_main != nullptr) {
+    if (_main == nullptr) {
+        db<Thread>(TRC) << "Thread main created!\n";
+    } else if (_dispatcher == nullptr) {
+        db<Thread>(TRC) << "Thread dispatcher created!\n";
+    } else {
+        db<Thread>(TRC) << "Thread worker created!\n";
         _state = State::READY;       
         _ready.insert(&_link);
     }

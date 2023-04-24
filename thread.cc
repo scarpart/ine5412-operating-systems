@@ -49,7 +49,7 @@ Thread::Context* Thread::context() volatile {
 void Thread::init(void (*main)(void *)) {
     db<Thread>(TRC) << "Thread::init called\n";
 
-    std::string name = "inicio";
+    std::string name = "main";
 
     // creation of thread main
     Thread* thread_main = new Thread(main, ((void *)name.c_str()));
@@ -68,36 +68,36 @@ void Thread::init(void (*main)(void *)) {
 void Thread::dispatcher() {
     db<Thread>(TRC) << "Thread::dispatcher called\n";
 
-    while (_ready.size() > 1) {
+    while (_ready.size() > 0) {
         // removing the first thread in the ready queue
         Ready_Queue::Element* thread_link = _ready.remove();
 
-         // updating state and inserting again thread dispatcher in ready queue  
-        _dispatcher->_state = State::READY;
-        _ready.insert(&_dispatcher->_link);
+        // updating state and inserting again thread dispatcher in ready queue  
+        //_dispatcher->_state = State::READY;
+        //_ready.insert(&_dispatcher->_link);
         
         // updating _running pointer
-        _running = thread_link->object();
         thread_link->object()->_state = State::RUNNING;
 
         // switching contexts between dispatcher and the thread chose
-        switch_context(_dispatcher, _running);
+        switch_context(_dispatcher, thread_link->object());
 
         // removing the next first thread to test if it's on FINISHING state
         Ready_Queue::Element* next_thread = _ready.remove();
 
-        // If not, i'll be inserted again at the same position
+        // If not, it'll be inserted again at the same position
         if (next_thread->object()->_state != State::FINISHING) {
             // ??? Is this thread the dispatcher one ???
             _ready.insert(next_thread);
-
+        } else {
+            db<Thread>(TRC) << "Thread deleted on Thread::dispatcher\n";
             delete next_thread;
         }
     }
 
     _dispatcher->_state = State::FINISHING;
     // PERGUNTAR PARA O PROFESSOR: COMO FUNCIONA AS THREADS MAIN E DISPATCHER NA LISTA DE READY
-    _ready.remove();
+    //_ready.remove();
     
     switch_context(_dispatcher, _main);
     /*
@@ -121,25 +121,22 @@ void Thread::yield() {
     db<Thread>(TRC) << "Thread::yield called\n";
 
     // removing the first thread in the ready queue
-    Ready_Queue::Element* thread_next = _ready.remove();
+    //Ready_Queue::Element* thread_next = _ready.remove();
 
     // updating the running thread state and priority
     _running->_state = State::READY;
     int now = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
     _running->_link.rank(now);
 
-    // creating a pointer to the thread that called yield()
-    Thread* thread_prev = _running;
-
     // inserting the thread_prev
-    _ready.insert(&thread_prev->_link);
+    _ready.insert(&_running->_link);
 
     // updating the new running thread
-    _running = thread_next->object();
-    _running->_state = State::RUNNING;
+    //thread_next->object()->_state = State::RUNNING;
 
-    // switching contexts between the previous running thread and the new one 
-    switch_context(thread_prev, _running); 
+    // switching contexts between the previous running thread and the new one (_running receive the next threads's pointer)
+    switch_context(_running, _dispatcher); 
+
     /*
     +imprima informação usando o debug em nível TRC
 
