@@ -57,7 +57,7 @@ public:
      * exit_code é o código de término devolvido pela tarefa (ignorar agora, vai ser usado mais tarde).
      * Quando a thread encerra, o controle deve retornar à main. 
      */  
-    void thread_exit (int exit_code);
+    void thread_exit(int exit_code);
 
     /*
      * Retorna o ID da thread.
@@ -89,7 +89,7 @@ public:
     /*
      * Destrutor de uma thread. Realiza todo os procedimentos para manter a consistência da classe.
      */ 
-    //~Thread();
+    ~Thread();
 
     /*
      * Qualquer outro método que você achar necessário para a solução.
@@ -102,9 +102,9 @@ private:
     Context * volatile _context;
     static Thread* _running;
     
-    static Thread* _main; 
-    static CPU::Context* _main_context;
-    static Thread* _dispatcher;
+    static Thread _main; 
+    static CPU::Context _main_context;
+    static Thread _dispatcher;
     static Ready_Queue _ready;
     Ready_Queue::Element _link;
     volatile State _state;
@@ -113,7 +113,9 @@ private:
      * Qualquer outro atributo que você achar necessário para a solução.
      */ 
 
-    static int _counter;
+    static unsigned int _thread_counter;
+
+    int _exit_code;
 };  
 
 template<typename ... Tn>
@@ -121,17 +123,12 @@ inline Thread::Thread(void (* entry)(Tn ...), Tn ... an) : _link(this,
         std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count())
 {
     _context = new Context(entry, an...);
-    _id = _counter++;
+    _id = _thread_counter++;
 
-    if (_main == nullptr) {
-        db<Thread>(TRC) << "Thread main created!\n";
-    } else if (_dispatcher == nullptr) {
-        db<Thread>(TRC) << "Thread dispatcher created!\n";
-    } else {
-        db<Thread>(TRC) << "Thread worker created!\n";
-        _state = State::READY;       
+    if (_id > 0) {
         _ready.insert(&_link);
     }
+    _state = State::READY;
 }
 
 __END_API
