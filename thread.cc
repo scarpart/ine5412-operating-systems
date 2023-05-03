@@ -30,14 +30,14 @@ void Thread::thread_exit(int exit_code) {
     Thread::_thread_counter--;
     _exit_code = exit_code;
     _state = State::FINISHING;
-    
+
     yield();
 }
 
 // id implementation
 int Thread::id() {
     // return the thread's id
-    db<Thread>(TRC) << "Thread's id returned\n";
+    //db<Thread>(TRC) << "Thread's id returned\n";
     return _id;
 };
 
@@ -52,18 +52,20 @@ Thread::Context* Thread::context() volatile {
 void Thread::init(void (*main)(void *)) {
     db<Thread>(TRC) << "Thread::init called\n";
 
+    // creation of _ready queue
+    new (&_ready) Thread::Ready_Queue();
+    
     // creation of thread main
-    Thread* thread_main = new Thread(main, (void *) "Main");
+    new (&_main) Thread(main, (void *) "Main");
 
-    _main = *thread_main;
-    _main_context = CPU::Context();
+    // creation of main context
+    new (&_main_context) CPU::Context();
 
     // creation of thread dispatcher
-    Thread* thread_dispatcher = new Thread(dispatcher);
-    _dispatcher = *thread_dispatcher;
-
+    new (&_dispatcher) Thread((void (*) (void *)) &Thread::dispatcher, (void *) NULL);
+    
     _running = &_main;
-    _main._state = State::RUNNING;
+    _main._state = RUNNING;
 
     // change the context
     CPU::switch_context(&_main_context, _main.context());
@@ -73,7 +75,7 @@ void Thread::init(void (*main)(void *)) {
 void Thread::dispatcher() {
     db<Thread>(TRC) << "Thread::dispatcher called\n";
 
-    while (_ready.size() > 1) {
+    while (_thread_counter > 2) {
         // removing the first thread in the ready queue
         Thread * next_thread = _ready.remove()->object();
 
