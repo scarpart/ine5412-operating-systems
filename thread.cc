@@ -9,7 +9,8 @@ unsigned int Thread::_thread_counter = 0;
 Thread Thread::_main; 
 CPU::Context Thread::_main_context;
 Thread Thread::_dispatcher;
-Thread::Ready_Queue Thread::_ready;
+Thread::Queue Thread::_ready;
+Thread::Queue Thread::_suspended;
 
 // switch_context implementation
 int Thread::switch_context(Thread * prev, Thread * next) {
@@ -51,9 +52,6 @@ Thread::Context* Thread::context() volatile {
 // init implementation
 void Thread::init(void (*main)(void *)) {
     db<Thread>(TRC) << "Thread::init called\n";
-
-    // creation of _ready queue
-    new (&_ready) Thread::Ready_Queue();
     
     // creation of thread main
     new (&_main) Thread(main, (void *) "Main");
@@ -110,7 +108,7 @@ void Thread::yield() {
     Thread * next = _ready.remove()->object();
 
     // updating the running thread state and priority
-    if (prev->_state != State::FINISHING && prev != &_main) {
+    if (prev->_state != State::FINISHING && prev != &_main && prev->_state != State::SUSPENDED) {
         // Updating prev thread link
         int now = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
         prev->_link.rank(now);
@@ -140,5 +138,37 @@ Thread::~Thread() {
         delete _context;
     }
 }
+
+// Thread join implementation
+int Thread::join() {
+    db<Thread>(TRC) << "Thread::join called\n";
+    this->suspend();
+    return _exit_code;
+}
+
+// Thread suspend implementation
+void Thread::suspend() {
+    db<Thread>(TRC) << "Thread::suspend called\n";
+
+    // removing the thread from _ready
+    _ready.remove(this);
+
+    // changing it state to suspended and then inserting it to _suspended 
+    _state = State::SUSPENDED;
+    _suspended.insert(&this->_link);
+    yield();
+}
+
+// Thread resume implementation
+void Thread::resume() {
+    db<Thread>(TRC) << "Thread::resume called\n";
+
+    // removing the supended thread from _suspended
+    _suspended.remove(this);
+
+    // changing it state to ready and then inserting it to _ready
+    _state = State::READY;
+    _ready.insert(&this->_link);
+}   
 
 __END_API

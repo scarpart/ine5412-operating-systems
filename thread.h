@@ -16,12 +16,13 @@ protected:
     typedef CPU::Context Context;
 public:
 
-    typedef Ordered_List<Thread> Ready_Queue;
+    typedef Ordered_List<Thread> Queue;
 
     // Thread State
     enum State {
-        RUNNING,
         READY,
+        RUNNING,
+        SUSPENDED,
         FINISHING
     };
 
@@ -96,7 +97,22 @@ public:
      */ 
 
     Context* context() volatile;
-    
+
+    /*
+     * Suspende a thread em execução até que a thread "alvo" finalize.
+     */
+    int join();
+
+    /*
+     * Suspende a thread até que resume() seja chamado.
+     */
+    void suspend();
+
+    /*
+     * Coloca a thread que estava suspensa de volta para a fila de prontos.
+     */
+    void resume();
+
 private:
     int _id;
     Context * volatile _context;
@@ -105,8 +121,8 @@ private:
     static Thread _main; 
     static CPU::Context _main_context;
     static Thread _dispatcher;
-    static Ready_Queue _ready;
-    Ready_Queue::Element _link;
+    static Queue _ready;
+    Queue::Element _link;
     volatile State _state;
 
     /*
@@ -114,15 +130,15 @@ private:
      */ 
 
     static unsigned int _thread_counter;
-
     int _exit_code;
+    static Queue _suspended;
 };  
 
 template<typename ... Tn>
 inline Thread::Thread(void (* entry)(Tn ...), Tn ... an) : _link(this, 
         std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count())
 {
-    db<Thread>(TRC) << "Thread::Thread() called - Thread [" << id() << "]\n";
+    db<Thread>(TRC) << "Thread::Thread() called\n";
 
     _context = new Context(entry, an...);
     _id = _thread_counter++;
