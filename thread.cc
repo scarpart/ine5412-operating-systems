@@ -91,7 +91,6 @@ void Thread::dispatcher() {
             _ready.remove(next_thread);
         }
     }
-
     _dispatcher._state = State::FINISHING;
     _ready.remove(&_dispatcher);
     Thread::switch_context(&_dispatcher, &_main);
@@ -107,18 +106,18 @@ void Thread::yield() {
     // Removing the first thread in the _ready
     Thread * next = _ready.remove()->object();
 
-    if (prev->_state == FINISHING && prev->_joining != nullptr) 
-    {
+    if (prev->_state == FINISHING && prev->_joined != nullptr) {
+        db<Thread>(TRC) << "Thread " << prev->id() << "is going to be resumed!\n";
         prev->resume();
     }
 
     // updating the running thread state and priority
     if (prev->_state != State::FINISHING && prev != &_main && prev->_state != State::SUSPENDED) {
-        // Updating prev thread link
+        // updating prev thread link
         int now = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
         prev->_link.rank(now);
 
-        // Updating the prev thread state
+        // updating the prev thread state
         prev->_state = State::READY;
 
         // inserting the thread_prev
@@ -130,7 +129,7 @@ void Thread::yield() {
     next->_state = State::RUNNING;
 
     // switching contexts between the previous running thread and the new one (_running receive the next threads's pointer)
-    switch_context(prev, next);
+    Thread::switch_context(prev, next);
 }
 
 // Thread destructor implementation
@@ -149,8 +148,8 @@ int Thread::join() {
     db<Thread>(TRC) << "Thread::join called\n";
     
     // The running thread will be suspended
-    _joining = _running;
-    _joining->suspend();
+    _joined = _running;
+    _joined->suspend();
     return _exit_code;
 }
 
@@ -161,7 +160,7 @@ void Thread::suspend() {
     // removing the thread from _ready
     _ready.remove(this);
 
-    // changing it state to suspended and then inserting it to _suspended 
+    // changing it state to suspended and then inserting it to _suspended
     _state = State::SUSPENDED;
     _suspended.insert(&this->_link);
     yield();
@@ -172,12 +171,12 @@ void Thread::resume() {
     db<Thread>(TRC) << "Thread::resume called\n";
 
     // removing the supended thread from _suspended
-    _suspended.remove(_joining);
+    _suspended.remove(_joined);
 
     // changing it state to ready and then inserting it to _ready
     _state = State::READY;
-    _ready.insert(&_joining->_link);
-    _joining = nullptr;
+    _ready.insert(&_joined->_link);
+    _joined = nullptr;
 }   
 
 __END_API
