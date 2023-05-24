@@ -128,7 +128,7 @@ private:
     /*
      * Qualquer outro atributo que você achar necessário para a solução.
      */ 
-
+    Thread* _joining = NULL;
     static unsigned int _thread_counter;
     int _exit_code;
     static Queue _suspended;

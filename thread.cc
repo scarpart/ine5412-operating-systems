@@ -107,6 +107,11 @@ void Thread::yield() {
     // Removing the first thread in the _ready
     Thread * next = _ready.remove()->object();
 
+    if (prev->_state == FINISHING && prev->_joining != nullptr) 
+    {
+        prev->resume();
+    }
+
     // updating the running thread state and priority
     if (prev->_state != State::FINISHING && prev != &_main && prev->_state != State::SUSPENDED) {
         // Updating prev thread link
@@ -142,7 +147,10 @@ Thread::~Thread() {
 // Thread join implementation
 int Thread::join() {
     db<Thread>(TRC) << "Thread::join called\n";
-    this->suspend();
+    
+    // The running thread will be suspended
+    _joining = _running;
+    _joining->suspend();
     return _exit_code;
 }
 
@@ -164,11 +172,12 @@ void Thread::resume() {
     db<Thread>(TRC) << "Thread::resume called\n";
 
     // removing the supended thread from _suspended
-    _suspended.remove(this);
+    _suspended.remove(_joining);
 
     // changing it state to ready and then inserting it to _ready
     _state = State::READY;
-    _ready.insert(&this->_link);
+    _ready.insert(&_joining->_link);
+    _joining = nullptr;
 }   
 
 __END_API
