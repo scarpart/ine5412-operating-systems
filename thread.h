@@ -23,7 +23,8 @@ public:
         READY,
         RUNNING,
         SUSPENDED,
-        FINISHING
+        FINISHING,
+        WAITING
     };
 
     /*
@@ -112,6 +113,21 @@ public:
      * Coloca a thread que estava suspensa de volta para a fila de prontos.
      */
     void resume();
+
+    /*
+     * A thread vai entrar no semáforo, se estiver cheio vai ficar esperando.
+     */
+    static Thread* sleep();
+
+    /*
+     * A thread vai sair do semárofo, liberando um espaço
+     */
+    static void wakeup(Thread *t);
+
+    /*
+     * O link_getter vai ser usado apenas no dentro dos métodos do semaphore, pois não tem permissão para o acesso direto do _link
+     */
+    Queue::Element* link_getter();
 
 private:
     int _id;

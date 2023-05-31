@@ -14,6 +14,7 @@ class CPU;
 class Debug;
 class Thread;
 class System;
+class Semaphore;
 
 //declaração da classe Traits
 template<typename T>
@@ -40,6 +41,11 @@ template<> struct Traits<Thread>: public Traits<void>
 };
 
 template<> struct Traits<System>: public Traits<void>
+{
+    static const bool debugged = true;
+};
+
+template <> struct Traits<Semaphore> : public Traits<void>
 {
     static const bool debugged = true;
 };

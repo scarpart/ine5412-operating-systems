@@ -37,6 +37,11 @@ class CPU
 
         static int switch_context(Context *from, Context *to);
 
+        // Incremento atômico
+        static int finc(volatile int &number);
+
+        // Decremento atômico
+        static int fdec(volatile int &number);
 };
 
 template <typename ...Tn>

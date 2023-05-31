@@ -35,4 +35,28 @@ int CPU::switch_context(Context *from, Context *to)
     return result;
 }
 
+int CPU::finc(volatile int &number) {
+    db<CPU>(TRC) << "CPU::finc() called\n";
+    int sum = 1;
+    __asm__ __volatile__("lock xadd %0, %2"
+                         : "=a"(sum)
+                         : "a"(sum), "m"(number)
+                         : "memory");
+
+    db<CPU>(TRC) << "Finc sum = " << sum << "\n";
+    return sum;
+}
+
+int CPU::fdec(volatile int &number) {
+    db<CPU>(TRC) << "CPU::fdec() called\n";
+    int sum = -1;
+    __asm__ __volatile__("lock xadd %0, %2"
+                         : "=a"(sum)
+                         : "a"(sum), "m"(number)
+                         : "memory");
+
+    db<CPU>(TRC) << "Fdec sum = " << sum << "\n";
+    return sum;
+}
+
 __END_API

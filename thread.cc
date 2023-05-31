@@ -32,6 +32,27 @@ void Thread::thread_exit(int exit_code) {
     _exit_code = exit_code;
     _state = State::FINISHING;
 
+    bool sleeping_main = false;
+
+    for (unsigned int i = 0; i < this->_suspended.size(); i++) {
+        Thread *supended_thread = this->_suspended.remove_head()->object();
+        
+        if (supended_thread) {
+            if (supended_thread == &_main) {
+                // Will be handle in a different way
+                sleeping_main = true;
+            } else {
+                supended_thread->resume();
+            }
+        }
+    }
+
+    if (sleeping_main) {
+        // Se é a main, não posso reinseri-la na fila
+        (&_main)->_state = RUNNING;
+        switch_context(this, &_main);
+    }
+
     yield();
 }
 
@@ -106,13 +127,8 @@ void Thread::yield() {
     // Removing the first thread in the _ready
     Thread * next = _ready.remove()->object();
 
-    if (prev->_state == FINISHING && prev->_joined != nullptr) {
-        db<Thread>(TRC) << "Thread " << prev->id() << "is going to be resumed!\n";
-        prev->resume();
-    }
-
     // updating the running thread state and priority
-    if (prev->_state != State::FINISHING && prev != &_main && prev->_state != State::SUSPENDED) {
+    if (_main._state != State::RUNNING && _running->_state == RUNNING) {
         // updating prev thread link
         int now = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
         prev->_link.rank(now);
@@ -147,9 +163,14 @@ Thread::~Thread() {
 int Thread::join() {
     db<Thread>(TRC) << "Thread::join called\n";
     
-    // The running thread will be suspended
-    _joined = _running;
-    _joined->suspend();
+    if (this->_state != FINISHING && this != _running) {
+        // The running thread will be suspended
+        _joined = _running;
+        _joined->suspend();
+    } else {
+        // return -1 when the state is equal to finishing or it the threads is not the one running
+        return -1;
+    }
     return _exit_code;
 }
 
@@ -157,8 +178,10 @@ int Thread::join() {
 void Thread::suspend() {
     db<Thread>(TRC) << "Thread::suspend called\n";
 
-    // removing the thread from _ready
-    _ready.remove(this);
+    if (this != &_main) {
+        // removing the thread from _ready
+        _ready.remove(this);
+    }
 
     // changing it state to suspended and then inserting it to _suspended
     _state = State::SUSPENDED;
@@ -170,13 +193,34 @@ void Thread::suspend() {
 void Thread::resume() {
     db<Thread>(TRC) << "Thread::resume called\n";
 
-    // removing the supended thread from _suspended
-    _suspended.remove(_joined);
+    if (_joined->_state == SUSPENDED) {
+        // removing the supended thread from _suspended
+        _suspended.remove(_joined);
 
-    // changing it state to ready and then inserting it to _ready
-    _state = State::READY;
-    _ready.insert(&_joined->_link);
-    _joined = nullptr;
+        // changing it state to ready and then inserting it to _ready
+        _state = State::READY;
+        _ready.insert(&_joined->_link);
+        _joined = nullptr;
+    }
 }   
+
+// Thread sleep implementation
+Thread *Thread::sleep() {
+    _running->_state = WAITING;
+
+    return _running;
+}
+
+// Thread wakeup implementation
+void Thread::wakeup(Thread *thread) {
+    thread->_state = READY;
+
+    // insert the thread that was sleeping again in READY queue
+    _ready.insert(&thread->_link);
+}
+
+Thread::Queue::Element *Thread::link_getter() {
+  return &this->_link;
+}
 
 __END_API
