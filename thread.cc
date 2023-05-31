@@ -206,6 +206,7 @@ void Thread::resume() {
 
 // Thread sleep implementation
 Thread *Thread::sleep() {
+    db<Thread>(TRC) << "Thread::sleep called\n";
     _running->_state = WAITING;
 
     return _running;
@@ -213,6 +214,7 @@ Thread *Thread::sleep() {
 
 // Thread wakeup implementation
 void Thread::wakeup(Thread *thread) {
+    db<Thread>(TRC) << "Thread::wakeup called\n";
     thread->_state = READY;
 
     // insert the thread that was sleeping again in READY queue
@@ -220,7 +222,8 @@ void Thread::wakeup(Thread *thread) {
 }
 
 Thread::Queue::Element *Thread::link_getter() {
-  return &this->_link;
+    db<Thread>(TRC) << "Thread::link_getter called\n";
+    return &this->_link;
 }
 
 __END_API
